@@ -4,11 +4,3 @@ $primary-hover: #1c3de7;
 $default: #212529;
 $aclaration: #6a7990;
 $lines: #e6ecf5;
-
-a {
-  text-decoration: none;
-  color: $primary;
-  :hover {
-    color: $primary-hover;
-  }
-}
