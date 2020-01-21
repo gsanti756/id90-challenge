@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { FilterHotels } from "src/app/store/hotels/models/hotels";
 
 @Component({
   selector: "app-filters",
@@ -7,14 +9,30 @@ import { faFilter } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ["./filters.component.scss"]
 })
 export class FiltersComponent implements OnInit {
-  faFilter = faFilter;
+  filterForm: FormGroup;
   showFilters: boolean;
+  faFilter = faFilter;
 
-  constructor() {}
+  @Output() FiltersSubmit = new EventEmitter<FilterHotels>();
 
-  ngOnInit() {}
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.showFilters = true;
+    this.filterForm = this.formBuilder.group({
+      destination: [""],
+      checkin: [""],
+      checkout: [""],
+      guests: [""]
+    });
+  }
 
   showFilter(): void {
     this.showFilters = !this.showFilters;
+  }
+
+  onSubmit(): void {
+    const { destination, checkin, checkout, guests } = this.filterForm.value;
+    this.FiltersSubmit.emit({ destination, checkin, checkout, guests });
   }
 }

@@ -11,11 +11,12 @@ import { StoreRouterConnectingModule } from "@ngrx/router-store";
 import { environment } from "src/environments/environment";
 
 import { AuthEffects } from "./auth/effects/auth.effects";
+import { HotelsEffects } from "./hotels/effects/hotels.effects";
 
 const NGRX_IMPORTS = [
   StoreModule.forRoot(reducers, { metaReducers }),
   StoreRouterConnectingModule.forRoot({ stateKey: "router" }),
-  EffectsModule.forRoot([AuthEffects]),
+  EffectsModule.forRoot([AuthEffects, HotelsEffects]),
   StoreDevtoolsModule.instrument({
     name: "id90Challenge",
     logOnly: environment.production,

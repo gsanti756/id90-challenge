@@ -13,6 +13,7 @@ import { storeFreeze } from "ngrx-store-freeze";
 
 // Reducers
 import * as fromAuth from "./auth/reducers/auth.reducer";
+import * as fromHotels from "./hotels/reducers/hotels.reducer";
 import * as fromRouter from "@ngrx/router-store";
 
 export interface AsyncAction {
@@ -23,11 +24,13 @@ export interface AsyncAction {
 
 export interface State {
   auth: fromAuth.State;
+  hotels: fromHotels.State;
   router: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
 export const reducers: ActionReducerMap<State | any> = {
   auth: fromAuth.AuthReducer,
+  hotels: fromHotels.HotelsReducer,
   router: fromRouter.routerReducer
 };
 
@@ -44,3 +47,4 @@ export const metaReducers: MetaReducer<State>[] = !environment.production
   : [];
 
 export const getAuthState = createFeatureSelector<fromAuth.State>("auth");
+export const getHotelsState = createFeatureSelector<fromHotels.State>("hotels");

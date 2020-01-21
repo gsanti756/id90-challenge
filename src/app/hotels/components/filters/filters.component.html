@@ -3,20 +3,56 @@
     <div class="col">
       <button type="button" class="btn button-filter" (click)="showFilter()">
         <fa-icon [icon]="faFilter" class="icon-filter"></fa-icon>
-        Filters
+        {{ showFilters ? "Hide" : "Show" }} Filters
       </button>
     </div>
   </div>
 </div>
 
-<div class="container-fluid main-container">
-  <div *ngIf="showFilters" class="row filter-form">
-    <div class="col">Destino: campo de texto</div>
+<div class="container-fluid main-container" *ngIf="showFilters">
+  <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+    <div class="row filter-form input-container">
+      <div class="col">
+        <label>Destination</label>
+        <input class="input" formControlName="destination" type="text" />
+      </div>
 
-    <div class="col">Rango de Fechas</div>
+      <div class="col">
+        <label>Check In</label>
+        <input
+          type="date"
+          formControlName="checkin"
+          name="checkin"
+          max="3000-12-31"
+          min="1000-01-01"
+          class="input"
+        />
+      </div>
 
-    <div class="col">Cantidad de huéspedes</div>
+      <div class="col">
+        <label>Check Out</label>
+        <input
+          type="date"
+          formControlName="checkout"
+          name="checkout"
+          max="3000-12-31"
+          min="1000-01-01"
+          class="input"
+        />
+      </div>
 
-    <div class="col">Botón de búsqueda</div>
-  </div>
+      <div class="col">
+        <label>Guests</label>
+        <input class="input" formControlName="guests" type="number" />
+      </div>
+    </div>
+
+    <div class="row button-container justify-content-end">
+      <div class="col-md-2 col-sm-12">
+        <button type="submit" class="btn btn-primary button-submit">
+          Search
+        </button>
+      </div>
+    </div>
+  </form>
 </div>

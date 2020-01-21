@@ -1,0 +1,32 @@
+agm-map {
+  height: 800px;
+}
+
+gm-style-iw {
+  width: 300px !important;
+  top: 15px !important;
+  left: 0px !important;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+  border: 1px solid rgba(72, 181, 233, 0.6);
+  border-radius: 2px 2px 10px 10px;
+}
+
+.info-hotel {
+  max-width: 240px;
+
+  .image-hotel {
+    max-width: 240px;
+    height: auto;
+  }
+
+  .title {
+    font-family: "latoBold";
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+  .description {
+    font-size: 0.75rem;
+  }
+}
