@@ -1,0 +1,33 @@
+@import "../../../theme/variables.scss";
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid $lines;
+}
+
+.logo {
+  padding: 14px 34px;
+  img {
+    width: auto;
+    height: 34px;
+  }
+}
+
+.tel-container {
+  color: $primary;
+  font-size: 1rem;
+  padding-right: 34px;
+
+  &:hover {
+    color: $primary-hover;
+  }
+
+  a {
+    text-decoration: none;
+    margin-right: 0.5rem !important;
+  }
+}
