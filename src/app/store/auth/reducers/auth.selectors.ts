@@ -12,3 +12,10 @@ export const loginError = createSelector(
   getAuthState,
   (state: State) => state.login && state.login.error
 );
+
+export const user = createSelector(getAuthState, (state: State) => state.user);
+
+export const isUserLoged = createSelector(
+  getAuthState,
+  (state: State) => state.user !== undefined
+);
