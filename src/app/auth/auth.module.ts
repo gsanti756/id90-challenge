@@ -5,15 +5,13 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
-import { HeaderComponent } from "../shared/components/header/header.component";
-
 import { AppStoreModule } from "../store/store.module";
 import { AuthRoutingModule } from "./auth-routing.module";
 import { LoginComponent } from "./containers/login/login.component";
 import { LoginFormComponent } from "./components/login-form/login-form.component";
 
 @NgModule({
-  declarations: [HeaderComponent, LoginComponent, LoginFormComponent],
+  declarations: [LoginComponent, LoginFormComponent],
 
   imports: [
     CommonModule,

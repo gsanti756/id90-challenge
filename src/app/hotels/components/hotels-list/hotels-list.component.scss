@@ -1,0 +1,21 @@
+@import "../../../theme/variables.scss";
+
+.item-hotel {
+  border-top: solid 1px $lines;
+  border-bottom: solid 1px $lines;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $lines;
+  }
+  .name-hotel {
+    font-size: 1.5rem;
+    font-family: "latoBold";
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.selected {
+  background-color: $lines !important;
+}
