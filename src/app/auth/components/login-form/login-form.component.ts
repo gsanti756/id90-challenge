@@ -19,6 +19,8 @@ export class LoginFormComponent implements OnInit {
   faEyeSlash = faEyeSlash;
 
   @Input() airlines: Airline[];
+  @Input() loading: boolean;
+  @Input() error: string;
 
   @Output() LoginFormSubmit = new EventEmitter<UserLoginForm>();
 
@@ -26,8 +28,8 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      user: ["", Validators.compose([Validators.required])],
       airline: ["", Validators.compose([Validators.required])],
+      username: ["", Validators.compose([Validators.required])],
       password: ["", Validators.compose([Validators.required])]
     });
   }
@@ -42,10 +44,13 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-    console.log(this.loginForm.value);
 
     if (this.loginForm.invalid) {
       return;
     }
+
+    const { airline, username, password } = this.loginForm.value;
+
+    this.LoginFormSubmit.emit({ airline, username, password });
   }
 }

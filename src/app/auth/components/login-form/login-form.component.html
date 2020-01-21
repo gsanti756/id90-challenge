@@ -24,17 +24,17 @@
         <label class="label">Username: </label>
         <input
           class="input"
-          formControlName="user"
+          formControlName="username"
           placeholder="youremail@company.com"
           type="email"
-          [ngClass]="{ 'input-error': submitted && f.user.errors }"
+          [ngClass]="{ 'input-error': submitted && f.username.errors }"
         />
 
-        <div *ngIf="submitted && f.user.errors" class="message-error">
-          <div *ngIf="f.user.errors.required">
+        <div *ngIf="submitted && f.username.errors" class="message-error">
+          <div *ngIf="f.username.errors.required">
             Email is required
           </div>
-          <div *ngIf="f.user.errors.email">
+          <div *ngIf="f.username.errors.email">
             Email must be a valid email address
           </div>
         </div>
@@ -68,9 +68,14 @@
     </div>
   </div>
 
+  <div class="message-error" *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
+
   <div class="row button-container justify-content-end">
     <div class="col-md-5 col-sm-12">
       <button type="submit" class="btn btn-primary button-submit">
+        <div class="spinner-border spinner-border-sm" *ngIf="loading"></div>
         Log In
       </button>
     </div>

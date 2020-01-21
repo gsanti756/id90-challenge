@@ -5,6 +5,8 @@
       <h1>Login</h1>
       <app-login-form
         [airlines]="airlines"
+        [loading]="loading$ | async"
+        [error]="error$ | async"
         (LoginFormSubmit)="onSubmit($event)"
       >
       </app-login-form>
