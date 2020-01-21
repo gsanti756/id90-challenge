@@ -11,17 +11,24 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AuthRoutingModule } from "./auth/auth-routing.module";
 import { AuthModule } from "./auth/auth.module";
 
+import { HotelsRoutingModule } from "./hotels/hotels-routing.module";
+import { HotelsModule } from "./hotels/hotels.module";
+
+import { HeaderComponent } from "./shared/components/header/header.component";
+
 // Containers
 import { PageNotFoundComponent } from "./shared/containers/page-not-found/page-not-found.component";
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent],
+  declarations: [AppComponent, PageNotFoundComponent, HeaderComponent],
   imports: [
     BrowserModule,
     FontAwesomeModule,
     AuthModule,
+    HotelsModule,
     AppRoutingModule,
     AuthRoutingModule,
+    HotelsRoutingModule,
     ReactiveFormsModule
   ],
   providers: [],

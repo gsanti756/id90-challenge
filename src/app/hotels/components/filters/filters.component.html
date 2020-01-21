@@ -1,0 +1,22 @@
+<div class="container-fluid main-container">
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn button-filter" (click)="showFilter()">
+        <fa-icon [icon]="faFilter" class="icon-filter"></fa-icon>
+        Filters
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid main-container">
+  <div *ngIf="showFilters" class="row filter-form">
+    <div class="col">Destino: campo de texto</div>
+
+    <div class="col">Rango de Fechas</div>
+
+    <div class="col">Cantidad de huéspedes</div>
+
+    <div class="col">Botón de búsqueda</div>
+  </div>
+</div>

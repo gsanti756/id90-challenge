@@ -1,0 +1,22 @@
+@import "../../../theme/variables.scss";
+
+.main-container {
+  width: 100%;
+  border-bottom: 0.5px solid $lines;
+}
+
+.button-filter {
+  padding: 5px 10px;
+  margin: 10px 5px;
+  color: $primary;
+  background-color: #ffffff;
+  border: solid 1px $primary;
+
+  .icon-filter {
+    margin-right: 5px;
+  }
+
+  .filter-form {
+    border: solid 1px $primary;
+  }
+}
