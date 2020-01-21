@@ -1,1 +1,13 @@
-<p>hotels-list works!</p>
+<div class="container-fluid">
+  <div class="row" *ngFor="let item of hotels">
+    <div
+      class="col item-hotel"
+      [ngClass]="{ selected: idSelected === item.id }"
+      (click)="onPressHotel(item)"
+    >
+      <p class="name-hotel">{{ item.name }}</p>
+      <p>{{ item.address }}</p>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ export interface Hotel {
   id: number;
   lat: number;
   lng: number;
+  address: string;
   name: string;
   image: string;
   description: string;

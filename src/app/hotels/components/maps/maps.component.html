@@ -1,10 +1,14 @@
-<agm-map [latitude]="latitude" [longitude]="longitude" [fitBounds]="true">
+<agm-map
+  [latitude]="hotelSelected ? hotelSelected.lat : latitude"
+  [longitude]="hotelSelected ? hotelSelected.lng : longitude"
+  [fitBounds]="true"
+>
   <agm-marker
     *ngFor="let item of hotels"
     [latitude]="item.lat"
     [longitude]="item.lng"
     [agmFitBounds]="true"
-    (markerClick)="onPressMarker(infowindow, item.lat, item.lng)"
+    (markerClick)="onPressMarker(infowindow, item, item.lat, item.lng)"
   >
     <agm-info-window [disableAutoPan]="false" #infowindow>
       <div class="info-hotel">
