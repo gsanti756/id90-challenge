@@ -37,6 +37,12 @@ export class AuthEffects {
     ofType<AuthActions.LoginFailure>(AuthActionTypes.LoginFailure)
   );
 
+  @Effect({ dispatch: false })
+  loginRequired$: Observable<Action> = this.actions$.pipe(
+    ofType<AuthActions.LoginRequired>(AuthActionTypes.LoginRequired),
+    tap(value => this.router.navigate(["/login"]))
+  );
+
   constructor(
     private http: HttpClient,
     private actions$: Actions,

@@ -5,7 +5,8 @@ import { UserLogin } from "../models/user";
 export enum AuthActionTypes {
   LoginRequest = "[Auth] LOGIN_REQUEST",
   LoginSuccess = "[Auth] LOGIN_SUCCESS",
-  LoginFailure = "[Auth] LOGIN_FAILURE"
+  LoginFailure = "[Auth] LOGIN_FAILURE",
+  LoginRequired = "[Auth] LOGIN_REQUIRED"
 }
 
 export class LoginRequest implements Action {
@@ -23,4 +24,12 @@ export class LoginFailure implements Action {
   constructor(public payload: any) {}
 }
 
-export type actions = LoginRequest | LoginSuccess | LoginFailure;
+export class LoginRequired implements Action {
+  readonly type = AuthActionTypes.LoginRequired;
+}
+
+export type actions =
+  | LoginRequest
+  | LoginSuccess
+  | LoginFailure
+  | LoginRequired;

@@ -1,11 +1,14 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
+import { ServiceService } from "./service/service.service";
+
 import { HotelsComponent } from "./containers/hotels/hotels.component";
 const routes: Routes = [
   {
     path: "hotels",
-    component: HotelsComponent
+    component: HotelsComponent,
+    canActivate: [ServiceService]
   }
 ];
 

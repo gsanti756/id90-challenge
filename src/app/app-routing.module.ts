@@ -7,7 +7,14 @@ import { PageNotFoundComponent } from "./shared/containers/page-not-found/page-n
 const routes: Routes = [
   {
     path: "",
-    component: AppComponent
+    component: AppComponent,
+    children: [
+      {
+        path: "",
+        redirectTo: "login",
+        pathMatch: "prefix"
+      }
+    ]
   },
   {
     path: "**",
