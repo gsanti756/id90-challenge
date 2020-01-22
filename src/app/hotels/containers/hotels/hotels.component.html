@@ -1,9 +1,13 @@
-<app-filters (FiltersSubmit)="onFilterSubmit($event)"></app-filters>
+<app-filters
+  (FiltersSubmit)="onFilterSubmit($event)"
+  [loading]="loading$ | async"
+></app-filters>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-3 list ">
+    <div class="col-3 list" (scroll)="onScroll($event)">
       <app-hotels-list
         [hotels]="hotels$ | async"
+        [loadingNextPage]="loadingNextPage$ | async"
         [idSelected]="idSelected"
         (HotelsListHotelSelected)="hotelSelected($event)"
       ></app-hotels-list>

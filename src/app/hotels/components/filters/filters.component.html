@@ -50,6 +50,10 @@
     <div class="row button-container justify-content-end">
       <div class="col-md-2 col-sm-12">
         <button type="submit" class="btn btn-primary button-submit">
+          <div
+            class="spinner-border spinner-border-sm spinner"
+            *ngIf="loading"
+          ></div>
           Search
         </button>
       </div>

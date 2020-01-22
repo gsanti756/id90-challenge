@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { formatDate } from "@angular/common";
+import { addDays } from "date-fns";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { FilterHotels } from "src/app/store/hotels/models/hotels";
@@ -13,6 +15,7 @@ export class FiltersComponent implements OnInit {
   showFilters: boolean;
   faFilter = faFilter;
 
+  @Input() loading: boolean;
   @Output() FiltersSubmit = new EventEmitter<FilterHotels>();
 
   constructor(private formBuilder: FormBuilder) {}
@@ -21,10 +24,14 @@ export class FiltersComponent implements OnInit {
     this.showFilters = true;
     this.filterForm = this.formBuilder.group({
       destination: [""],
-      checkin: [""],
-      checkout: [""],
-      guests: [""]
+      checkin: [formatDate(new Date(), "yyyy-MM-dd", "en")],
+      checkout: [formatDate(addDays(new Date(), 7), "yyyy-MM-dd", "en")],
+      guests: [1]
     });
+  }
+
+  getStartDate(): string {
+    return "";
   }
 
   showFilter(): void {

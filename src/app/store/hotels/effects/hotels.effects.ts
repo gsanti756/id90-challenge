@@ -28,15 +28,20 @@ export class HotelsEffects {
     })
   );
 
-  @Effect({ dispatch: false })
-  getHotelsSuccess$: Observable<Action> = this.actions$.pipe(
-    ofType<HotelsActions.GetHotelsSuccess>(HotelsActionTypes.GetHotelsSuccess),
-    tap(value => this.router.navigate(["/hotels"]))
-  );
-
-  @Effect({ dispatch: false })
-  getHotelsFailure$: Observable<Action> = this.actions$.pipe(
-    ofType<HotelsActions.GetHotelsFailure>(HotelsActionTypes.GetHotelsFailure)
+  @Effect()
+  getNextPageRequest$: Observable<Action> = this.actions$.pipe(
+    ofType<HotelsActions.GetNextPageRequest>(
+      HotelsActionTypes.GetNextPageRequest
+    ),
+    exhaustMap(action => {
+      const { destination, checkin, checkout, guests, page } = action.payload;
+      return this.hotelsService
+        .getHotels({ destination, checkin, checkout, guests, page })
+        .pipe(
+          map(response => new HotelsActions.GetNextPageSuccess(response)),
+          catchError(error => of(new HotelsActions.GetNextPageFailure(error)))
+        );
+    })
   );
 
   constructor(

@@ -9,6 +9,7 @@ import { Hotel } from "src/app/store/hotels/models/hotels";
 export class HotelsListComponent implements OnInit {
   @Input() hotels: Hotel[];
   @Input() idSelected: number;
+  @Input() loadingNextPage: boolean;
 
   @Output() HotelsListHotelSelected = new EventEmitter<Hotel>();
 
@@ -18,5 +19,12 @@ export class HotelsListComponent implements OnInit {
 
   onPressHotel(hotel: Hotel) {
     this.HotelsListHotelSelected.emit(hotel);
+  }
+
+  getFullAddress(item: Hotel): string {
+    const {
+      location: { city, country }
+    } = item;
+    return `${city} - ${country}`;
   }
 }
