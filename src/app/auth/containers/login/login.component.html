@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-md-4 col-sm-4 col-xs-12 offset-md-4 offset-sm-4">
+      <h1>Login</h1>
+      <app-login-form
+        [airlines]="airlines"
+        [loading]="loading$ | async"
+        [error]="error$ | async"
+        (LoginFormSubmit)="onSubmit($event)"
+      >
+      </app-login-form>
+    </div>
+  </div>
+</div>

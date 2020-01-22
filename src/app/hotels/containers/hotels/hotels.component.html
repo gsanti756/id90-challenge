@@ -1,0 +1,23 @@
+<app-filters
+  (FiltersSubmit)="onFilterSubmit($event)"
+  [loading]="loading$ | async"
+></app-filters>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3 list" (scroll)="onScroll($event)">
+      <app-hotels-list
+        [hotels]="hotels$ | async"
+        [loadingNextPage]="loadingNextPage$ | async"
+        [idSelected]="idSelected"
+        (HotelsListHotelSelected)="hotelSelected($event)"
+      ></app-hotels-list>
+    </div>
+    <div class="col-9 ">
+      <app-maps
+        [hotels]="hotels$ | async"
+        [selected]="selected"
+        (MapsHotelSelected)="hotelSelected($event)"
+      ></app-maps>
+    </div>
+  </div>
+</div>

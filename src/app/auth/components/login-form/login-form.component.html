@@ -1,0 +1,83 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col">
+      <div class="input-container">
+        <label class="label">Airline</label>
+        <select
+          class="custom-select"
+          formControlName="airline"
+          class="input"
+          [ngClass]="{ 'input-error': submitted && f.airline.errors }"
+        >
+          <option value="" disabled>Choose your airline</option>
+          <option *ngFor="let airline of airlines">{{ airline.name }}</option>
+        </select>
+
+        <div *ngIf="submitted && f.airline.errors" class="message-error">
+          <div *ngIf="f.airline.errors.required">
+            Airline is required
+          </div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label class="label">Username: </label>
+        <input
+          class="input"
+          formControlName="username"
+          placeholder="youremail@company.com"
+          type="email"
+          [ngClass]="{ 'input-error': submitted && f.username.errors }"
+        />
+
+        <div *ngIf="submitted && f.username.errors" class="message-error">
+          <div *ngIf="f.username.errors.required">
+            Email is required
+          </div>
+          <div *ngIf="f.username.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label class="label">Password</label>
+        <input
+          class="input"
+          formControlName="password"
+          placeholder="password"
+          type="{{ showPassword ? 'text' : 'password' }}"
+          [ngClass]="{ 'input-error': submitted && f.password.errors }"
+        />
+
+        <fa-icon
+          [icon]="showPassword ? faEyeSlash : faEye"
+          class="icon-input"
+          (click)="onShowPassword()"
+        ></fa-icon>
+
+        <div *ngIf="submitted && f.password.errors" class="message-error">
+          <div *ngIf="f.password.errors.required">
+            Password is required
+          </div>
+          <div *ngIf="f.password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="message-error" *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div class="row button-container justify-content-end">
+    <div class="col-md-5 col-sm-12">
+      <button type="submit" class="btn btn-primary button-submit">
+        <div class="spinner-border spinner-border-sm" *ngIf="loading"></div>
+        Log In
+      </button>
+    </div>
+  </div>
+</form>

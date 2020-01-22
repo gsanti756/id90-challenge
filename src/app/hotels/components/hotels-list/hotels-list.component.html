@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row" *ngFor="let item of hotels">
+    <div
+      class="col item-hotel"
+      [ngClass]="{ selected: idSelected === item.id }"
+      (click)="onPressHotel(item)"
+    >
+      <p class="name-hotel">{{ item.name }}</p>
+      <p>{{ getFullAddress(item) }}</p>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+
+  <div
+    *ngIf="loadingNextPage"
+    class="row justify-content-center loading-container"
+  >
+    <div class="col"></div>
+    <div class="col"><div class="spinner-border "></div></div>
+    <div class="col"></div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<agm-map
+  [latitude]="hotelSelected ? hotelSelected.location.latitude : latitude"
+  [longitude]="hotelSelected ? hotelSelected.location.longitude : longitude"
+  [fitBounds]="true"
+>
+  <agm-marker
+    *ngFor="let item of hotels"
+    [latitude]="item.location.latitude"
+    [longitude]="item.location.longitude"
+    [agmFitBounds]="true"
+    (markerClick)="
+      onPressMarker(
+        infowindow,
+        item,
+        item.location.latitude,
+        item.location.longitude
+      )
+    "
+  >
+    <agm-info-window
+      [disableAutoPan]="false"
+      [isOpen]="hotelSelected && hotelSelected.id === item.id"
+      #infowindow
+    >
+      <div class="info-hotel">
+        <img [src]="item.image" class="image-hotel" />
+
+        <p class="title">{{ item.name }}</p>
+
+        <p class="description">{{ item.description }}</p>
+      </div>
+    </agm-info-window>
+  </agm-marker>
+</agm-map>
