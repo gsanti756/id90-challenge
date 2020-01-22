@@ -44,13 +44,10 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-
     if (this.loginForm.invalid) {
       return;
     }
-
     const { airline, username, password } = this.loginForm.value;
-
     this.LoginFormSubmit.emit({ airline, username, password });
   }
 }

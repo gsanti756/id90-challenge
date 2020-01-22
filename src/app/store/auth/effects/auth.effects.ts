@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 import { Action } from "@ngrx/store";
 import { Actions, Effect, ofType } from "@ngrx/effects";
-import { observable, of, Observable } from "rxjs";
+import { of, Observable } from "rxjs";
 import { catchError, map, exhaustMap, tap } from "rxjs/operators";
 
 import { AuthActionTypes } from "../actions/auth.action";
@@ -20,7 +19,10 @@ export class AuthEffects {
     exhaustMap(action => {
       const { airline, username, password } = action.payload;
       return this.authSrvice.login({ airline, username, password }).pipe(
-        map(response => new AuthActions.LoginSuccess(response)),
+        map(response => {
+          localStorage.setItem("user", JSON.stringify(response.member));
+          return new AuthActions.LoginSuccess(response);
+        }),
         catchError(error => of(new AuthActions.LoginFailure(error)))
       );
     })
@@ -30,11 +32,6 @@ export class AuthEffects {
   loginSuccess$: Observable<Action> = this.actions$.pipe(
     ofType<AuthActions.LoginSuccess>(AuthActionTypes.LoginSuccess),
     tap(value => this.router.navigate(["/hotels"]))
-  );
-
-  @Effect({ dispatch: false })
-  loginFailure$: Observable<Action> = this.actions$.pipe(
-    ofType<AuthActions.LoginFailure>(AuthActionTypes.LoginFailure)
   );
 
   @Effect({ dispatch: false })

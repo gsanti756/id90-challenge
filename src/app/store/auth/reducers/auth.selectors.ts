@@ -15,7 +15,6 @@ export const loginError = createSelector(
 
 export const user = createSelector(getAuthState, (state: State) => state.user);
 
-export const isUserLoged = createSelector(
-  getAuthState,
-  (state: State) => state.user !== undefined
-);
+export const isUserLoged = createSelector(getAuthState, (state: State) => {
+  return JSON.parse(localStorage.getItem("user")) ? true : false;
+});
