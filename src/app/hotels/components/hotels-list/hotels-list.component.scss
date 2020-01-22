@@ -9,7 +9,7 @@
     background-color: $lines;
   }
   .name-hotel {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-family: "latoBold";
     margin-bottom: 0;
     padding-bottom: 0;
@@ -18,4 +18,8 @@
 
 .selected {
   background-color: $lines !important;
+}
+
+.loading-container {
+  margin: 10px auto 20px;
 }
