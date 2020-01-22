@@ -1,7 +1,5 @@
 # Id90 Travel Challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
-
 ## Login Form:
 
 - Airline: se debe mostrar y seleccionar la aerolinea de un listado
