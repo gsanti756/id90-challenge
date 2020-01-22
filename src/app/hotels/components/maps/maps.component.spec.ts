@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MapsComponent } from './maps.component';
+import { MapsComponent } from "./maps.component";
+import { AgmCoreModule } from "@agm/core";
 
-describe('MapsComponent', () => {
+describe("MapsComponent", () => {
   let component: MapsComponent;
   let fixture: ComponentFixture<MapsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MapsComponent ]
-    })
-    .compileComponents();
+      declarations: [MapsComponent],
+      imports: [AgmCoreModule.forRoot()]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('MapsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

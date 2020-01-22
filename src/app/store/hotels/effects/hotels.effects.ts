@@ -45,9 +45,7 @@ export class HotelsEffects {
   );
 
   constructor(
-    private http: HttpClient,
     private actions$: Actions,
-    private hotelsService: HotelsService,
-    private router: Router
+    private hotelsService: HotelsService
   ) {}
 }

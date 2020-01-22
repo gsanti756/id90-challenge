@@ -9,10 +9,17 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppStoreModule } from "../../../store/store.module";
 import { AuthService } from "../../../store/auth/services/auth.service";
+import { of } from "rxjs";
 
 describe("LoginComponent", () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+
+  const storeMock = {
+    select() {
+      return of({ name: "Peter", registrationDate: "11/11/18" });
+    }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -36,12 +43,5 @@ describe("LoginComponent", () => {
 
   it("should create", () => {
     expect(component).toBeTruthy();
-  });
-
-  it("should render title", () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector(".content span").textContent).toContain(
-      "id90-challenge app is running!"
-    );
   });
 });
