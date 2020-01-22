@@ -17,7 +17,11 @@
       )
     "
   >
-    <agm-info-window [disableAutoPan]="false" #infowindow>
+    <agm-info-window
+      [disableAutoPan]="false"
+      [isOpen]="hotelSelected && hotelSelected.id === item.id"
+      #infowindow
+    >
       <div class="info-hotel">
         <img [src]="item.image" class="image-hotel" />
 
