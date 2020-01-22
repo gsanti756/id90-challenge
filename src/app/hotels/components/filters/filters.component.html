@@ -1,6 +1,6 @@
 <div class="container-fluid main-container">
   <div class="row">
-    <div class="col">
+    <div class="col col-sm-3 col-sm-12">
       <button type="button" class="btn button-filter" (click)="showFilter()">
         <fa-icon [icon]="faFilter" class="icon-filter"></fa-icon>
         {{ showFilters ? "Hide" : "Show" }} Filters
@@ -12,38 +12,50 @@
 <div class="container-fluid main-container" *ngIf="showFilters">
   <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
     <div class="row filter-form input-container">
-      <div class="col">
+      <div class="col-lg-3 col-sm-12">
         <label>Destination</label>
         <input class="input" formControlName="destination" type="text" />
+
+        <div *ngIf="submitted && f.destination.errors" class="message-error">
+          <div *ngIf="f.destination.errors.required">
+            Destination is required
+          </div>
+        </div>
       </div>
 
-      <div class="col">
+      <div class="col-lg-3 col-sm-12">
         <label>Check In</label>
         <input
           type="date"
           formControlName="checkin"
           name="checkin"
           max="3000-12-31"
-          min="1000-01-01"
+          min="2020-01-01"
           class="input"
         />
       </div>
 
-      <div class="col">
+      <div class=" col-lg-3 col-sm-12">
         <label>Check Out</label>
         <input
           type="date"
           formControlName="checkout"
           name="checkout"
           max="3000-12-31"
-          min="1000-01-01"
+          min="2020-01-01"
           class="input"
         />
       </div>
 
-      <div class="col">
+      <div class=" col-lg-3 col-sm-12">
         <label>Guests</label>
-        <input class="input" formControlName="guests" type="number" />
+        <input class="input" formControlName="guests" type="number" min="1" />
+
+        <div *ngIf="submitted && f.guests.errors" class="message-error">
+          <div *ngIf="f.guests.errors.required">
+            Guests is required
+          </div>
+        </div>
       </div>
     </div>
 

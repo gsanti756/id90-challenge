@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import { from, Observable, throwError } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
 
 import { Airline } from "../models/airline";
@@ -15,7 +15,7 @@ export class AuthService {
 
   public getAirlines(): Observable<Airline[]> {
     return this.http.get<Airline[]>("airlines").pipe(
-      tap(),
+      map(data => data),
       catchError(x => throwError(x))
     );
   }

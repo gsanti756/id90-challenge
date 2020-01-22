@@ -1,7 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 
 import { ServiceService } from "./service.service";
-import { AppStoreModule } from "../../store/store.module";
+import { AppStoreModule } from "../store/store.module";
 import { RouterTestingModule } from "@angular/router/testing";
 
 describe("ServiceService", () => {
